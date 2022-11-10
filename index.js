@@ -26,7 +26,7 @@ async function run() {
             console.log(size);
             const query = {}
             const cursor = serviceCollection.find(query);
-            const services = await cursor.limit(size).toArray();
+            const services = await cursor.sort({ $natural: -1 }).limit(size).toArray();
             res.send(services);
         });
 
